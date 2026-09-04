@@ -14,7 +14,10 @@ const JWT_SECRET = process.env.JWT_SECRET || 'your_super_secret_key_change_in_pr
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.use(cors());
+app.use(cors({
+  origin: process.env.FRONTEND_URL || '*',
+  credentials: true
+}));
 app.use(express.json());
 
 // Auth middleware
